@@ -10,8 +10,7 @@ function Wywoz() {
         wywozy: [
             {day: '12', month: 'listopad', 'rok': 2022, nazwa: 'Tworzywa sztuczne', typ: 'plastik'},
             {day: '13', month: 'listopad', 'rok': 2022, nazwa: 'Szkło', typ: 'szklo'},
-            {day: '13', month: 'listopad', 'rok': 2022, nazwa: 'Papier', typ: 'papier'},
-            {day: '13', month: 'listopad', 'rok': 2022, nazwa: 'Papier', typ: 'papier'},
+            {day: '02', month: 'grudzień', 'rok': 2022, nazwa: 'Papier', typ: 'papier'},
         ]
 
     }
