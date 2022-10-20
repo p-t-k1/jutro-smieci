@@ -1,0 +1,56 @@
+@import '../../colors.css';
+
+@media only screen and (max-width: 576px) {
+  .Item {
+    background-color: var(--gray);
+    border-radius: 20px;
+    padding: 5px 10px 10px 10px;
+    margin-bottom: 10px;
+    aspect-ratio: 2.5;
+  }
+
+  .Title {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  .Info {
+    background-color: transparent;
+    margin-top: 0px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .Item {
+    background-color: var(--gray);
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    width: 270px;
+    aspect-ratio: 1;
+  }
+
+  .Title {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  .Info {
+    background-color: transparent;
+    margin-top: 0px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+

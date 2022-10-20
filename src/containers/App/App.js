@@ -1,9 +1,12 @@
-import logo from './logo.svg';
+import logo from '../../shared/logo.svg';
 import './App.css';
+import React  from 'react';
 
 function App() {
+
   return (
     <div className="App">
+      <div className="headerr"> Jutro śmieci </div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

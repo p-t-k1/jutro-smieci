@@ -1,0 +1,42 @@
+@import '../../colors.css';
+
+@media only screen and (max-width: 576px) {
+  .Header  {
+    color: white;
+    background-color: var(--primary);
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 26px;
+    height: 70px;
+    text-align: center;
+    font-weight: bold;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .Menu {
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .Header  {
+    color: white;
+    background-color: var(--primary);
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 26px;
+    height: 70px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .Menu {
+    margin-top: 5px;
+    display: none;
+  }
+}
+

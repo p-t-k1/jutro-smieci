@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .headerr  {
+    color: white;
+    background-color: #fdb71e;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .headerr  {
+    color: red;
+    background-color: #fdb71e;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+  }
+}
+
