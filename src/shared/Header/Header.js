@@ -31,6 +31,7 @@ function Header() {
         <div className="Menu">
             <StyledLink to={"/"} onClick={()=>setShowMenu(false)}>Strona główna</StyledLink>
             <StyledLink to={"/wywoz"} onClick={()=>setShowMenu(false)}>Najbliższy wywóz</StyledLink>
+            <StyledLink to={"/lokalizacja"} onClick={()=>setShowMenu(false)}>Twoja lokalizacja</StyledLink>
         </div>
         }
 

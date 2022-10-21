@@ -1,0 +1,82 @@
+@import '../../colors.css';
+
+@media only screen and (max-width: 576px) {
+  .Lokalizacja {
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 10%;
+  }
+
+  .Header-container {
+      text-align: center;
+      margin-bottom: 15px;
+  }
+
+  .Header1 {
+      font-size: 26px;
+      font-weight: bold;
+  }
+
+  .Header2 {
+      font-size: 18px;
+      font-width: light;
+  }
+
+  .Form {
+      background-color: antiquewhite;
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+  }
+
+  .Form > span {
+      font-size: 22px;
+      margin-bottom: 5px;
+  }
+
+  .Form > input {
+      background-color: var(--gray);
+      border: 1px solid #818181;
+      height: 50px;
+      font-size: 24px;
+      margin-bottom: 25px;
+  }
+
+  .Results {
+      background-color: burlywood;
+      margin-top: 20px;
+      font-size: 22px;
+      margin-bottom: 5px;
+  }
+
+  .Results > span {
+      font-weight: 500;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+    .Lokalizacja {
+        padding-left: 20%;
+        padding-right: 20%;
+        padding-top: 2%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .Header-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .Header1 {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .Header2 {
+        font-size: 18px;
+        font-width: light;
+    }
+}
+
