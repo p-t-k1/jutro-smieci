@@ -10,6 +10,7 @@ function Home() {
         <Item title="Twoja lokalizacja" icon="location" desc="Dąbrowa Tarnowska, ul. Leśna 13a" nav="lokalizacja"/>
         <Item title="Najbliższy wywóz" icon="trash" desc="Zobacz najbliższy wywóz śmieci" nav="wywoz"/>
         <Item title="Harmonogram" icon="calendar" desc="Zobacz cały harmonogram" nav="harmonogram"/>
+        <Item title="Powiadomienia" icon="alarm" desc="Ustaw przypomnienie o wystawieniu śmieci" nav="powiadomienia"/>
         <Item />
         <Item />
     </div>

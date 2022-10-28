@@ -1,6 +1,6 @@
 import React  from 'react';
 import './Item.css';
-import {LocationOutline, TrashOutline, CalendarOutline} from "react-ionicons";
+import {LocationOutline, TrashOutline, CalendarOutline, AlarmOutline} from "react-ionicons";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
@@ -29,6 +29,16 @@ function Item({title, icon, desc, nav}) {
         if(icon === 'calendar') {
             return (
                 <CalendarOutline
+                    color={'#00000'}
+                    height="40px"
+                    width="40px"
+                    style={{marginLeft: "2px", marginRight: "3px"}}
+                />
+            )
+        }
+        if(icon === 'alarm') {
+            return (
+                <AlarmOutline
                     color={'#00000'}
                     height="40px"
                     width="40px"
