@@ -1,4 +1,3 @@
-import '../App/App.css';
 import React  from 'react';
 import './Wywoz.css'
 import ListItem from "../../shared/ListItem/ListItem";

@@ -1,0 +1,59 @@
+@import '../../colors.css';
+
+@media only screen and (max-width: 576px) {
+  .LoginPage {
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 10%;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+    .LoginPage {
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-top: 2%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .LoginForm {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        width: 30%;
+    }
+
+    .LoginForm > span {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .LoginForm > input {
+        background-color: var(--gray);
+        border: 1px solid #818181;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .LoginForm > h3 {
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .LoginForm > button {
+        background-color: var(--primary);
+        border-radius: 15px;
+        border: 0px;
+        color: white;
+        padding: 10px;
+        width: 60%;
+        font-size: 22px;
+        margin:auto;
+    }
+
+}
+

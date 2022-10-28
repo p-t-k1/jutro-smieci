@@ -1,4 +1,3 @@
-import '../App/App.css';
 import React  from 'react';
 import Item from "../../shared/Item/Item";
 import './Home.css'

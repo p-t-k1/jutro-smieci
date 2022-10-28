@@ -1,4 +1,3 @@
-import '../App/App.css';
 import React, {useEffect} from 'react';
 import './Harmonogram.css'
 

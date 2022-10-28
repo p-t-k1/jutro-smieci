@@ -91,7 +91,6 @@
     }
 
     .Form {
-        background-color: transparent;
         display: flex;
         flex-direction: column;
         margin-top: 5px;
@@ -116,7 +115,7 @@
         border: 0px;
         color: white;
         padding: 10px;
-        width: 60%;
+        width: 40%;
         font-size: 22px;
         margin:auto;
     }
