@@ -1,0 +1,153 @@
+@import '../../colors.css';
+
+@media only screen and (max-width: 576px) {
+  .Harmonogram {
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 10%;
+  }
+
+  .Header-container {
+      text-align: center;
+      margin-bottom: 15px;
+  }
+
+  .Header1 {
+      font-size: 26px;
+      font-weight: bold;
+  }
+
+  .Header2 {
+      font-size: 18px;
+      font-width: light;
+  }
+
+}
+
+@media only screen and (min-width: 576px) {
+    .Harmonogram {
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 2%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .Header-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .Header1 {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .Header2 {
+        font-size: 18px;
+        font-width: light;
+    }
+
+    .Schedule {
+        background-color: transparent;
+    }
+
+    .first-row {
+        background-color: transparent;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+    }
+
+    .first-row > * {
+        margin-right: 1px;
+        min-height: 50px;
+        min-width: 70px;
+        word-wrap: break-word;
+    }
+
+    .header-month-name {
+        background-color: #fbd0a5;
+        flex: 1;
+    }
+
+    .month-name {
+        background-color: #fce0c3;
+        flex: 1;
+    }
+
+    .header-type-mixed {
+        background-color: #e0e0e0;
+        flex: 1;
+    }
+
+    .type-mixed {
+        background-color: #f9f9f9;
+        flex: 1;
+    }
+
+    .header-type-glass {
+        background-color: #95bf8f;
+        flex: 1;
+    }
+
+    .type-glass {
+        background-color: #c3e6c7;
+        flex: 1;
+    }
+
+    .header-type-plastic {
+        background-color: #f1f57a;
+        flex: 1;
+    }
+
+    .type-plastic {
+        background-color: #f5f7c9;
+        flex: 1;
+    }
+
+    .header-type-paper {
+        background-color: #93cbf0;
+        flex: 1;
+    }
+
+    .type-paper {
+        background-color: #dfe9f0;
+        flex: 1;
+    }
+
+    .type-bio {
+        background-color: #e6e4dd;
+        flex: 1;
+    }
+
+    .header-type-bio {
+        background-color: #b3a79e;
+        flex: 1;
+    }
+
+    .type-bulk {
+        background-color: #f0e1e2;
+        flex: 1;
+    }
+
+    .header-type-bulk {
+        background-color: #e3c6c6;
+        flex: 1;
+    }
+
+    .month {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+    }
+
+    .month > * {
+        margin-right: 1px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 1px;
+    }
+}
+

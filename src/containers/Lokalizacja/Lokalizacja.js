@@ -6,6 +6,8 @@ function Lokalizacja() {
 
     const lokalizacje = [
         {miejscowosc: "Dąbrowa Tarnowska", ulica: "LeśnaLeśnaLeśnaLeśnaLeśnaLeśnaLeśnaLeśnaLeśna", kodpocztowy: "33-200"},
+        {miejscowosc: "Dąbrowa Tarnowska", ulica: "LeśnaLeśnaLeśnaLeśnaLeśnaLeśnaLeśnaLeśnaLeśna", kodpocztowy: "33-200"},
+        {miejscowosc: "Tarnów", ulica: "Nowa", kodpocztowy: "33-100"},
         {miejscowosc: "Tarnów", ulica: "Nowa", kodpocztowy: "33-100"},
     ]
 

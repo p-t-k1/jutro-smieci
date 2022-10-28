@@ -1,6 +1,7 @@
 @import '../../colors.css';
 
 @media only screen and (max-width: 576px) {
+
   .AddressItem {
       background-color: var(--gray);
       height: 55px;
@@ -19,13 +20,18 @@
 
 @media only screen and (min-width: 576px) {
 
-    .ListItem {
+    .AddressItem {
         background-color: var(--gray);
-        height: 80px;
-        border-radius: 10px;
-        margin-bottom: 10px;
+        height: 65px;
+        border-radius: 20px;
+        margin-top: 10px;
         display: flex;
         flex-direction: row;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 20px;
+        overflow: auto;
     }
 
 }

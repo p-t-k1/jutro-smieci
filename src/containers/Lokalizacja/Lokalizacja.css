@@ -23,7 +23,7 @@
   }
 
   .Form {
-      background-color: antiquewhite;
+      background-color: transparent;
       display: flex;
       flex-direction: column;
       margin-top: 30px;
@@ -43,7 +43,7 @@
   }
 
   .Results {
-      background-color: burlywood;
+      background-color: transparent;
       margin-top: 20px;
       font-size: 22px;
       margin-bottom: 5px;
@@ -77,6 +77,37 @@
     .Header2 {
         font-size: 18px;
         font-width: light;
+    }
+
+    .Form {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5px;
+    }
+
+    .Form > span {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .Form > input {
+        background-color: var(--gray);
+        border: 1px solid #818181;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .Results {
+        background-color: transparent;
+        margin-top: 20px;
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+
+    .Results > span {
+        font-weight: 500;
     }
 }
 
