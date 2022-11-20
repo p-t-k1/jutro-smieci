@@ -15,7 +15,7 @@ function Powiadomienia() {
             <input type="text"/>
 
             <span>Przypomnienie:</span>
-            <select name="cars" id="cars">
+            <select name="days" id="days">
                 <option value="1day">1 dzień przed wywozem</option>
                 <option value="2day">2 dni przed wywozem</option>
                 <option value="3day">3 dni przed wywozem</option>

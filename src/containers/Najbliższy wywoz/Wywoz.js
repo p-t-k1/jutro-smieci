@@ -1,41 +1,63 @@
-import React  from 'react';
+import React, {useEffect, useState} from 'react';
 import './Wywoz.css'
 import ListItem from "../../shared/ListItem/ListItem";
+import axios from "axios";
+import config from "../../config";
+import moment from "moment"
+import { toast } from 'react-toastify';
 
-function Wywoz() {
+// eslint-disable-next-line no-unused-vars,react/prop-types
+function Wywoz({props}) {
 
-    const harmonogram = {
-        lokalizacja: {
-            miasto: "Tarnów",
-            ulica: "1 Maja",
-            kodpocztowy: "33-100",
-            dodatkowe: "",
-        },
-        wywozy: [
-            {day: '12', month: 'listopad', year: 2022, nazwa: 'Tworzywa sztuczne', typ: 'plastik'},
-            {day: '13', month: 'listopad', year: 2022, nazwa: 'Szkło', typ: 'szklo'},
-            {day: '02', month: 'grudzień', year: 2022, nazwa: 'Papier', typ: 'papier'},
-        ]
+    const [data, setData] = useState();
+    const areaId = JSON.parse(localStorage.getItem('area'))._id;
 
+    const filterData = (data) => {
+        let filteredData = data.filter(element =>
+            moment(`${element.rok}-${element.miesiac}-${element.dzien}`) >= moment()
+        );
+
+        return filteredData;
     }
 
+    useEffect(() => {
+        axios({
+            method: 'post',
+            url: `${config.serverUrl}/api/schedules/getById`,
+            data: {
+                id: areaId
+            }
+        })
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((error) => {
+                if (error.message === 'Network Error') {
+                    alert('Problem z połączeniem internetowym');
+                } else {
+                    toast.error(error.response.data);
+                }
+            });
+    }, []);
 
-  return (
-    <div className="Wywoz">
-        <div className="Header-container">
-            <span className="Header1">Najbliższy wywóz dla</span><br />
-            <span className="Header2">{harmonogram.lokalizacja.miasto + harmonogram.lokalizacja.ulica}</span>
-        </div>
 
-        <div className="List">
-            {harmonogram.wywozy.map(element => {
-                return (
-                    <ListItem key='s' day={element.day} month={element.month} nazwa={element.nazwa} typ={element.typ} />
-                )
-            })}
+    return (
+        <div className="Wywoz">
+            <div className="Header-container">
+                <span className="Header1">Najbliższy wywóz dla</span><br/>
+                {data && <span className="Header2">{data.schedule.obszar.kodpocztowy + " " + data.schedule.obszar.miejscowosc + ", " + data.schedule.obszar.ulica + " " + data.schedule.obszar.komentarz}</span> }
+            </div>
+
+            <div className="List">
+                {data && filterData(data.schedule.wywozy).map(element => {
+                    return (
+                        <ListItem key={element._id} dzien={element.dzien} miesiac={element.miesiac} rok={element.rok} typ={element.typ}/>
+                    )
+                })}
+            </div>
+
         </div>
-    </div>
-  );
+    );
 }
 
 export default Wywoz;

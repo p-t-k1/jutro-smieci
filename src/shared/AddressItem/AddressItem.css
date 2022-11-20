@@ -4,34 +4,54 @@
 
   .AddressItem {
       background-color: var(--gray);
-      height: 55px;
       border-radius: 15px;
-      margin-top: 10px;
+      margin-top: 13px;
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding-left: 10px;
-      padding-right: 10px;
+      flex-direction: column;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 13px;
+      padding-bottom: 15px;
       font-size: 20px;
       overflow: auto;
   }
 
+  .second-row {
+    font-size: 17px;
+    margin-top: 8px;
+  }
+
+  .third-row {
+      font-size: 15px;
+      opacity: 0.7;
+  }
 }
 
 @media only screen and (min-width: 576px) {
 
     .AddressItem {
         background-color: var(--gray);
-        height: 65px;
         border-radius: 20px;
         margin-top: 10px;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding-left: 10px;
-        padding-right: 10px;
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         font-size: 20px;
         overflow: auto;
+        cursor: pointer;
+    }
+
+    .second-row {
+        font-size: 17px;
+        margin-top: 10px;
+    }
+
+    .third-row {
+        font-size: 15px;
+        opacity: 0.7;
     }
 
 }

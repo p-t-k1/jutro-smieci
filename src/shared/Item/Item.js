@@ -1,11 +1,18 @@
 import React  from 'react';
 import './Item.css';
-import {LocationOutline, TrashOutline, CalendarOutline, AlarmOutline, MailOutline} from "react-ionicons";
+import {
+    LocationOutline,
+    TrashOutline,
+    CalendarOutline,
+    AlarmOutline,
+    MailOutline,
+    AlertCircleOutline
+} from "react-ionicons";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
-function Item({title, icon, desc, nav}) {
+function Item({disabled, title, icon, desc, nav}) {
 
     const renderIcon = (icon) => {
         if(icon === 'location') {
@@ -56,6 +63,32 @@ function Item({title, icon, desc, nav}) {
                 />
             )
         }
+        if(icon === 'alert') {
+            return (
+                <AlertCircleOutline
+                    color={'#00000'}
+                    height="40px"
+                    width="40px"
+                    style={{marginLeft: "4px", marginRight: "3px"}}
+                />
+            )
+        }
+    }
+
+    if(disabled) {
+        return (
+            <div>
+                <div className="Item-disabled">
+                    <div className="Title">
+                        {renderIcon(icon)}
+                        <h2>{title}</h2>
+                    </div>
+                    <div className="Info">
+                        {desc}
+                    </div>
+                </div>
+            </div>
+        );
     }
 
   return (
@@ -78,6 +111,7 @@ Item.propTypes = {
     icon: PropTypes.string,
     desc: PropTypes.string,
     nav: PropTypes.string,
+    disabled: PropTypes.bool
 };
 
 export default Item;

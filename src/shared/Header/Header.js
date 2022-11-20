@@ -8,6 +8,14 @@ function Header() {
 
     const [showMenu, setShowMenu] = useState(false);
 
+    const isAdmin = () => {
+        const companyToken = localStorage.getItem('smieci-token');
+        if(companyToken){
+            return '/panel';
+        }
+        return '/';
+    }
+
   return (
       <>
         <div className="Header">
@@ -18,7 +26,7 @@ function Header() {
                 width="40px"
                 onClick={()=>setShowMenu(!showMenu)}
             />
-            <StyledLink to={"/"}><p>Jutro śmieci</p></StyledLink>
+            <StyledLink to={isAdmin}><p>Jutro śmieci</p></StyledLink>
             <MenuOutline
                 className="MenuIcon"
                 color={'#fdb71e'}

@@ -1,0 +1,183 @@
+@import '../../colors.css';
+
+@media only screen and (max-width: 576px) {
+  .PanelLokalizacje {
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 10%;
+  }
+
+  .Header-container {
+      text-align: center;
+      margin-bottom: 15px;
+  }
+
+  .Header1 {
+      font-size: 26px;
+      font-weight: bold;
+  }
+
+  .Header2 {
+      font-size: 18px;
+      font-width: light;
+  }
+
+  .Form {
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+  }
+
+  .Form > span {
+      font-size: 22px;
+      margin-bottom: 5px;
+  }
+
+  .Form > input {
+      background-color: var(--gray);
+      border: 1px solid #818181;
+      height: 50px;
+      font-size: 24px;
+      margin-bottom: 25px;
+  }
+
+  .Results {
+      background-color: transparent;
+      margin-top: 20px;
+      font-size: 22px;
+      margin-bottom: 5px;
+  }
+
+  .Results > span {
+      font-weight: 500;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+    .PanelLokalizacje {
+        padding-left: 4%;
+        padding-right: 4%;
+        padding-top: 2%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .Header-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .Header1 {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .Header2 {
+        font-size: 18px;
+        font-width: light;
+    }
+
+    .Form {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5px;
+    }
+
+    .Form > span {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .Form > input {
+        background-color: var(--gray);
+        border: 1px solid #818181;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .Results {
+        background-color: transparent;
+        margin-top: 20px;
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+
+    .Results > span {
+        font-weight: 500;
+    }
+
+    .Content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .Left-Content {
+        background-color: transparent;
+        width: 50%;
+        padding-left: 2%;
+        padding-right: 2%;
+        border-right: 1px solid #cecece;
+    }
+
+    .Right-Content {
+        width: 50%;
+        background-color: transparent;
+        padding-left: 2%;
+        padding-right: 2%;
+
+    }
+
+    .Edit-Title {
+        text-align: center;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 20px;
+        margin-top: 15px
+    }
+    .Edit-Id {
+        text-align: center;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+        margin-top: 5px
+    }
+
+    .Clear-Button {
+        background-color: var(--gray);
+        text-align: center;
+        padding: 15px;
+        width: 80%;
+        margin: auto;
+        border-radius: 5px;
+        border: 1px solid #868686;
+        font-size: 18px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .Add-Button {
+        background-color: var(--primary);
+        text-align: center;
+        padding: 15px;
+        width: 80%;
+        margin: auto;
+        border-radius: 5px;
+        border: 1px solid #868686;
+        font-size: 18px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .Edit-Delete {
+        position: absolute;
+        right: 80px;
+        cursor: pointer;
+    }
+}
+

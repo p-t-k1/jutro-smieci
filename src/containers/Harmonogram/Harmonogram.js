@@ -1,55 +1,100 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Harmonogram.css'
+import axios from "axios";
+import config from "../../config";
 
 function Harmonogram() {
 
-    const harmonogram = {
-        lokalizacja: {
-            miasto: "Tarnów",
-            ulica: "1 Maja",
-            kodpocztowy: "33-100",
-            dodatkowe: "",
-        },
-        wywozy: [
-            {day: '12', month: '01', year: '2022', nazwa: 'Zmieszane', typ: 'mixed'},
-            {day: '24', month: '01', year: '2022', nazwa: 'Zmieszane', typ: 'mixed'},
-            {day: '4', month: '01', year: '2022', nazwa: 'Szkło', typ: 'glass'},
-            {day: '14', month: '01', year: '2022', nazwa: 'Plastik', typ: 'plastic'},
-            {day: '13', month: '01', year: '2022', nazwa: 'Papier', typ: 'paper'},
-            {day: '24', month: '01', year: '2022', nazwa: 'Bio odpady', typ: 'bio'},
-            {day: '1', month: '01', year: '2022', nazwa: 'Wielkogabarytowe', typ: 'bulk'},
-            {day: '3', month: '02', year: '2022', nazwa: 'Wielkogabarytowe', typ: 'bulk'},
-        ]
+    const [data, setData] = useState();
+    const [isMobile, setIsMobile] = useState(window.innerWidth >= 576 ? false : true);
+    const areaId = JSON.parse(localStorage.getItem('area'))._id;
 
+    const JSONToSchedule = () =>{
+        if(data){
+            data.schedule.wywozy.map(element => {
+                const singleCell = document.getElementsByClassName(`month ${element.miesiac}`)[0].getElementsByClassName(`typ-${element.typ}`)[0];
+                console.log(singleCell)
+                if(singleCell.textContent == ""){
+                    singleCell.textContent += `${element.dzien}`
+                } else {
+                    singleCell.textContent += `,${element.dzien}`
+                }
+            })
+        }
     }
 
     useEffect(() => {
-        console.log("MAPUJE!")
-        test();
-    },[]);
+        function handleResize() {
+            setIsMobile(window.innerWidth >= 576 ? false : true)
+        }
+        window.addEventListener('resize', handleResize)
 
-    const test = () =>{
-        harmonogram.wywozy.map(element => {
-            const singleCell = document.getElementsByClassName(`month ${element.month}`)[0].getElementsByClassName(`type-${element.typ}`)[0];
-            if(singleCell.textContent == ""){
-                singleCell.textContent += `${element.day}`
-            } else {
-                singleCell.textContent += `,${element.day}`
+        axios({
+            method: 'post',
+            url: `${config.serverUrl}/api/schedules/getById`,
+            data: {
+                id: areaId
             }
         })
-    }
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((error) => {
+                if (error.message === 'Network Error') {
+                    alert('Problem z połączeniem internetowym');
+                } else {
+                    alert(error.response.data);
+                }
+            });
+    }, []);
+    useEffect(() => {
+        JSONToSchedule()
+    }, [data]);
+    useEffect(() => {
+        JSONToSchedule()
+    }, [isMobile]);
 
-  return (
+
+    return (
     <div className="Harmonogram">
         <div className="Header-container">
             <span className="Header1">Harmonogram wywozu dla:</span><br />
-            <span className="Header2">{harmonogram.lokalizacja.miasto + harmonogram.lokalizacja.ulica}</span>
+            {data && <span className="Header2">{data.schedule.obszar.kodpocztowy + " " + data.schedule.obszar.miejscowosc + ", " + data.schedule.obszar.ulica + " " + data.schedule.obszar.komentarz}</span> }
         </div>
 
         <div className="Schedule">
-            <div className="first-row"><div className="header-month-name">Miesiąc</div><div className="header-type-mixed">Zmieszane</div><div className="header-type-glass">Szkło</div><div className="header-type-plastic">Tworzywa sztuczne</div><div className="header-type-paper">Papier</div><div className="header-type-bio">Biodegradowalne</div><div className="header-type-bulk">Wielkogabarytowe</div></div>
-            <div className="month 01"><div className="month-name">Styczeń</div><div className="type-mixed"></div><div className="type-glass"></div><div className="type-plastic"></div><div className="type-paper"></div><div className="type-bio"></div><div className="type-bulk"></div></div>
-            <div className="month 02"><div className="month-name">Luty</div><div className="type-mixed"></div><div className="type-glass"></div><div className="type-plastic"></div><div className="type-paper"></div><div className="type-bio"></div><div className="type-bulk"></div></div>
+
+            { !isMobile && <>
+            <div className="first-row"><div className="header-month-name">Miesiąc</div><div className="header-typ-zmieszane">Zmieszane</div><div className="header-typ-szklo">Szkło</div><div className="header-typ-plastik">Tworzywa sztuczne</div><div className="header-typ-papier">Papier</div><div className="header-typ-bio">Biodegradowalne</div><div className="header-typ-gabaryt">Wielkogabarytowe</div></div>
+            <div className="month 1"><div className="month-name">Styczeń</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 2"><div className="month-name">Luty</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 3"><div className="month-name">Marzec</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 4"><div className="month-name">Kwiecień</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 5"><div className="month-name">Maj</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 6"><div className="month-name">Czerwiec</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 7"><div className="month-name">Lipiec</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 8"><div className="month-name">Sierpień</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 9"><div className="month-name">Wrzesień</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 10"><div className="month-name">Październik</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 11"><div className="month-name">Listopad</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            <div className="month 12"><div className="month-name">Grudzień</div><div className="typ-zmieszane"></div><div className="typ-szklo"></div><div className="typ-plastik"></div><div className="typ-papier"></div><div className="typ-bio"></div><div className="typ-gabaryt"></div></div>
+            </>}
+
+            {isMobile && <>
+                <div className="month 1"><div className="month-label">Miesiąc</div><div className="month-name">Styczeń</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 2"><div className="month-label">Miesiąc</div><div className="month-name">Luty</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 3"><div className="month-label">Miesiąc</div><div className="month-name">Marzec</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 4"><div className="month-label">Miesiąc</div><div className="month-name">Kwiecień</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 5"><div className="month-label">Miesiąc</div><div className="month-name">Maj</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 6"><div className="month-label">Miesiąc</div><div className="month-name">Czerwiec</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 7"><div className="month-label">Miesiąc</div><div className="month-name">Lipiec</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 8"><div className="month-label">Miesiąc</div><div className="month-name">Sierpień</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 9"><div className="month-label">Miesiąc</div><div className="month-name">Wrzesień</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 10"><div className="month-label">Miesiąc</div><div className="month-name">Październik</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 11"><div className="month-label">Miesiąc</div><div className="month-name">Listopad</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+                <div className="month 12"><div className="month-label">Miesiąc</div><div className="month-name">Grudzień</div><div className="zmieszane-label">Zmieszane</div><div className="typ-zmieszane"></div><div className="szklo-label">Szkło</div><div className="typ-szklo"></div><div className="plastik-label">Tworzywa sztuczne</div><div className="typ-plastik"></div><div className="papier-label">Papier</div><div className="typ-papier"></div><div className="bio-label">Biodegradowalne</div><div className="typ-bio"></div><div className="gabaryt-label">Wielkogabarytowe</div><div className="typ-gabaryt"></div></div>
+            </>}
+
         </div>
     </div>
   );
