@@ -13,7 +13,7 @@ function Panel() {
         <div className="Panel">
             <Item title="Wprowadzone lokalizacje" icon="location" desc="Przejrzyj lub dodaj nową lokalizację" nav="panel/lokalizacje"/>
             <Item title="Wprowadzone harmonogramy" icon="calendar" desc="Przeglądaj harmonogramy wywozu lub dodaj nowy" nav="panel/harmonogram"/>
-            <Item title="Przesłane zgłoszenia" icon="mail" desc="Przeglądaj zgłoszenia i problemy użytkowników" nav="harmonogram"/>
+            <Item title="Przesłane zgłoszenia" icon="mail" desc="Przeglądaj zgłoszenia i problemy użytkowników" nav="panel/zgloszenia"/>
         </div>
       </>
   );

@@ -12,6 +12,7 @@ import PrivateRoute from "../utils/PrivateRoute";
 import PanelLokalizacje from "../containers/PanelLokalizacje/PanelLokalizacje";
 import PanelHarmonogram from "../containers/PanelHarmonogram/PanelHarmonogram";
 import Zglos from "../containers/Zglos/Zglos";
+import PanelZgloszenia from "../containers/PanelZgloszenia/PanelZgloszenia";
 
 const Router = () => (
       <Switch>
@@ -19,6 +20,7 @@ const Router = () => (
           <Route path="/wywoz" component={Wywoz} />
           <PrivateRoute path="/panel/lokalizacje" component={PanelLokalizacje} />
           <PrivateRoute path="/panel/harmonogram" component={PanelHarmonogram} />
+          <PrivateRoute path="/panel/zgloszenia" component={PanelZgloszenia} />
           <PrivateRoute path="/panel" component={Panel} />
           <Route path="/lokalizacja" component={Lokalizacja} />
           <Route path="/harmonogram" component={Harmonogram} />

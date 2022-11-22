@@ -16,7 +16,7 @@ function PanelLokalizacje() {
     const [miejscowosc, setMiejscowosc] = useState("");
     const [kodpocztowy, setKodpocztowy] = useState("");
 
-    let filterList = (data) => {
+    const filterList = (data) => {
         let filteredList = data.filter(element =>
             element.miejscowosc.toLowerCase().startsWith(search.toLowerCase()) ||
             element.ulica.toLowerCase().startsWith(search.toLowerCase()) ||
