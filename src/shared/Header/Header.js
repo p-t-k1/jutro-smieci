@@ -3,6 +3,7 @@ import './Header.css';
 import { MenuOutline } from 'react-ionicons'
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import logo from '../logo.png';
 
 function Header() {
 
@@ -26,7 +27,7 @@ function Header() {
                 width="40px"
                 onClick={()=>setShowMenu(!showMenu)}
             />
-            <StyledLink to={isAdmin}><p>Jutro śmieci</p></StyledLink>
+            <StyledLink to={isAdmin}><p>Jutro śmieci</p><img src={logo} style={{marginLeft: "5px"}} height="40px" width="40px"/></StyledLink>
             <MenuOutline
                 className="MenuIcon"
                 color={'#fdb71e'}
@@ -52,6 +53,8 @@ export default Header;
 
 const StyledLink = styled(Link)`
     text-decoration: none;
+    display: flex;
+    align-items: center;
 
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;

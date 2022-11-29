@@ -2,12 +2,17 @@ import React, {useEffect, useState} from 'react';
 import './Harmonogram.css'
 import axios from "axios";
 import config from "../../config";
+import {toast} from "react-toastify";
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
+
 
 function Harmonogram() {
 
     const [data, setData] = useState();
     const [isMobile, setIsMobile] = useState(window.innerWidth >= 576 ? false : true);
     const areaId = JSON.parse(localStorage.getItem('area'))._id;
+    const doc = new jsPDF()
 
     const JSONToSchedule = () =>{
         if(data){
@@ -21,6 +26,54 @@ function Harmonogram() {
                 }
             })
         }
+    }
+    const renderPDF = () => {
+
+        let wywozy = data.schedule.wywozy;
+        let body = [
+            ['Styczen','','','','','',''],
+            ['Luty','','','','','',''],
+            ['Marzec','','','','','',''],
+            ['Kwiecien','','','','','',''],
+            ['Maj','','','','','',''],
+            ['Czerwiec','','','','','',''],
+            ['Lipiec','','','','','',''],
+            ['Sierpien','','','','','',''],
+            ['Wrzesien','','','','','',''],
+            ['Pazdziernik','','','','','',''],
+            ['Listopad','','','','','',''],
+            ['Grudzien','','','','','',''],
+        ];
+
+        wywozy.map(element => {
+            let types = {zmieszane: 1, szklo: 2, plastik: 3, papier: 4, bio: 5, gabaryt: 6};
+            let column = types[element.typ];
+            let cell = body[element.miesiac-1][column];
+
+            if(cell == ''){
+                body[element.miesiac-1][column] = element.dzien
+            } else {
+                body[element.miesiac-1][column] += "," + element.dzien
+            }
+
+        })
+
+        // Header
+        doc.setTextColor(40);
+        doc.setFontSize(20);
+        doc.text("Harmonogram wywozu dla:", doc.internal.pageSize.getWidth()/2, 10, { align: "center" })
+        doc.setFontSize(14);
+        doc.text(data.schedule.obszar.kodpocztowy + " " + data.schedule.obszar.miejscowosc + ", " + data.schedule.obszar.ulica + " " + data.schedule.obszar.komentarz, doc.internal.pageSize.getWidth()/2, 16, { align: "center" })
+
+        autoTable(doc, {
+            styles: { cellWidth: 25, halign: 'center', valign: 'middle', lineWidth: 0.3, lineColor: 'black', textColor: 'black', cellPadding: 2.5},
+            headStyles: { fillColor: [215, 215, 215], fontStyle: 'normal',},
+            margin: { top: 20 },
+            head: [['Miesiac', 'Zmieszane', 'Szklo', 'Tworzywa sztuczne', 'Papier', 'Biodegradowalne', 'Wielkogabarytowe']],
+            body: body,
+        })
+
+        doc.save(`${data.schedule.obszar.ulica}-harmonogram.pdf`)
     }
 
     useEffect(() => {
@@ -42,6 +95,8 @@ function Harmonogram() {
             .catch((error) => {
                 if (error.message === 'Network Error') {
                     alert('Problem z połączeniem internetowym');
+                } else if (error.response.data == "Not Found") {
+                    toast.error("Twoja lokalizacja nie posiada jeszcze harmonogramu wywozu śmieci")
                 } else {
                     alert(error.response.data);
                 }
@@ -53,7 +108,6 @@ function Harmonogram() {
     useEffect(() => {
         JSONToSchedule()
     }, [isMobile]);
-
 
     return (
     <div className="Harmonogram">
@@ -96,6 +150,7 @@ function Harmonogram() {
             </>}
 
         </div>
+        <button onClick={renderPDF}>Pobierz harmonogram</button>
     </div>
   );
 }

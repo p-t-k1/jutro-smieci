@@ -22,7 +22,7 @@ function Powiadomienia() {
                 <option value="5day">5 dni przed wywozem</option>
             </select>
 
-            <button>Zapisz</button>
+            <div className={"Add-Button"}>Zapisz</div>
         </div>
     </div>
   );

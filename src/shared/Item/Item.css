@@ -72,5 +72,17 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+
+  .Number {
+    background: orange;
+    position: relative;
+    margin-left: -15px;
+    left: 15px;
+    bottom: 15px;
+    aspect-ratio: 1;
+    width: 20px;
+    border-radius: 50px;
+    text-align: center;
+  }
 }
 

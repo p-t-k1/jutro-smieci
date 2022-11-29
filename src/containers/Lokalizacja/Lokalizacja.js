@@ -73,6 +73,9 @@ function Lokalizacja() {
                     )
                 })
             }
+            {
+                data && filterList(data).length == 0 && <><br/><div className="Not-found">Nie znaleziono żadnej lokalizacji</div></>
+            }
         </div>
 
     </div>

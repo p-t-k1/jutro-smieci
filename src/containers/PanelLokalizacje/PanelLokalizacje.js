@@ -147,7 +147,7 @@ function PanelLokalizacje() {
         </div>
 
         <div className="Content">
-            <div className="Left-Content">
+            <div className="Left-Content-loc">
                 <div className="Form">
                     <span>Wyszukaj</span>
                     <input type="text" value={search} onChange={() => setSearch(event.target.value)}/>
@@ -164,7 +164,7 @@ function PanelLokalizacje() {
                     }
                 </div>
             </div>
-            <div className="Right-Content">
+            <div className="Right-Content-loc">
                 <span className="Edit-Title">Edycja obszaru {identyfikator && <TrashOutline onClick={handleDelete} className="Edit-Delete" color={'#d54830'} height="30px" width="30px"/>}</span>
                 <span className="Edit-Id">{identyfikator ? `Identyfikator obszaru: ${identyfikator}` : ""}</span>
                 <div className="Form">

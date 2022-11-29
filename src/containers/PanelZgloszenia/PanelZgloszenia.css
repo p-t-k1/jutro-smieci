@@ -89,16 +89,16 @@
         width: 40%;
         border-right: 1px solid #cecece;
         min-height: 600px;
-        padding-right: 0px;
-        padding-left: 0px;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
     }
 
     .Right-Content {
         width: 60%;
         background-color: transparent;
         min-height: 300px;
-        padding-left: 0%;
-        padding-right: 0%;
+        padding-left: 0% !important;
+        padding-right: 0% !important;
     }
 
     .Message {
@@ -150,7 +150,7 @@
         background-color: #e6e7e3;
     }
 
-    .Searchbar > input, input:focus {
+    .Searchbar-input, .Searchbar-input:focus {
         background-color: #e6e7e3;
         outline: none;
         border: none;

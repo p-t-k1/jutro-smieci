@@ -52,6 +52,13 @@
   .Results > span {
       font-weight: 500;
   }
+
+    .Not-found {
+        text-align: center;
+        font-style: italic;
+        margin-top: 25px;
+        color: #4e4e4e;
+    }
 }
 
 @media only screen and (min-width: 576px) {
@@ -109,5 +116,13 @@
     .Results > span {
         font-weight: 500;
     }
+
+    .Not-found {
+        text-align: center;
+        font-style: italic;
+        margin-top: 25px;
+        color: #4e4e4e;
+    }
+
 }
 

@@ -193,7 +193,6 @@ function PanelHarmonogram() {
             <input className="search-bar" placeholder="Wpisz aby wyszukać" type="text" value={search} onChange={() => setSearch(event.target.value)}/><br />
             <select name="area" id="area" onChange={() =>getScheduleById(event.target.value)}>
                 <option value="brak">Wybierz obszar</option>
-                <option value="new">[Dodaj nowy obszar]</option>
                 {areas && filterList(areas).map(element =>
                     <option key={element._id} value={element._id}>{element.ulica} {element.komentarz}, {element.kodpocztowy} {element.miejscowosc}</option>
                 )}

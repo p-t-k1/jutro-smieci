@@ -112,11 +112,9 @@ function PanelZgloszenia() {
             <span className="Header2">Kliknij aby przeczytać szczegóły zgłoszenia</span>
         </div>
 
-        {data && JSON.stringify(data[0])}
-
         <div className="Content">
             <div className="Left-Content">
-                <div className="Searchbar"><input placeholder="Wpisz aby wyszukać" onChange={(event)=>setSearch(event.target.value)}/></div>
+                <div className="Searchbar"><input className="Searchbar-input" placeholder="Wpisz aby wyszukać" onChange={(event)=>setSearch(event.target.value)}/></div>
                 {data && filterList(data).map((element, index) => renderMessage(element, index))}
             </div>
             <div className="Right-Content">

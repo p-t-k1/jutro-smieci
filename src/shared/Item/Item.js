@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
-function Item({disabled, title, icon, desc, nav}) {
+function Item({disabled, title, icon, desc, nav, amount}) {
 
     const renderIcon = (icon) => {
         if(icon === 'location') {
@@ -74,6 +74,12 @@ function Item({disabled, title, icon, desc, nav}) {
             )
         }
     }
+    const showNumber = () => {
+        if(title == "Przesłane zgłoszenia" && amount > 0){
+            return true;
+        }
+        return false;
+    }
 
     if(disabled) {
         return (
@@ -95,6 +101,7 @@ function Item({disabled, title, icon, desc, nav}) {
     <StyledLink to={nav}>
         <div className="Item">
             <div className="Title">
+                {showNumber() && <div className="Number">{amount}</div> }
                 {renderIcon(icon)}
                 <h2>{title}</h2>
             </div>
@@ -111,6 +118,7 @@ Item.propTypes = {
     icon: PropTypes.string,
     desc: PropTypes.string,
     nav: PropTypes.string,
+    amount: PropTypes.number,
     disabled: PropTypes.bool
 };
 
