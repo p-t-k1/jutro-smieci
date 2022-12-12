@@ -17,8 +17,19 @@ function Wywoz({props}) {
             moment(`${element.rok}-${element.miesiac}-${element.dzien}`) >= moment()
         );
 
+        filteredData = filteredData.sort( compare );
+
         return filteredData;
     }
+    const compare = ( a, b ) => {
+        if ( moment(`${a.rok}-${a.miesiac}-${a.dzien}`) < moment(`${b.rok}-${b.miesiac}-${b.dzien}`) ){
+            return -1;
+        }
+        if ( moment(`${a.rok}-${a.miesiac}-${a.dzien}`) > moment(`${b.rok}-${b.miesiac}-${b.dzien}`) ){
+            return 1;
+        }
+        return 0;
+    } // funkcja sortująca daty po kolei
 
     useEffect(() => {
         axios({
