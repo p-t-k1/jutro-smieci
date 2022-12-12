@@ -27,5 +27,15 @@
         border-bottom: 1px solid #818181;
         background-color: var(--gray);
     }
+
+    .Logout {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: -10px;
+        margin-right: 10px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 

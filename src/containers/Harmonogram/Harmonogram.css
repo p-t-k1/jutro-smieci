@@ -115,6 +115,16 @@
         flex: 50%;
     }
 
+    .Render-pdf {
+        cursor: pointer;
+        font-style: italic;
+        text-decoration: underline;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        color: #2c2a2a;
+    }
+
 }
 
 @media only screen and (min-width: 576px) {
@@ -250,6 +260,15 @@
         border: 0px;
         box-sizing: border-box;
         width: 100%;
+    }
+
+    .Render-pdf {
+        cursor: pointer;
+        font-style: italic;
+        text-decoration: underline;
+        font-size: 18px;
+        margin-top: 10px;
+        color: #2c2a2a;
     }
 }
 

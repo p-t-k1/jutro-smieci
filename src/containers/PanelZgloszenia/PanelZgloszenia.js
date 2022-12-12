@@ -36,9 +36,9 @@ function PanelZgloszenia() {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else {
-                    alert(error.response.data);
+                    toast.error(error.response.data);
                 }
             });
     }
@@ -72,9 +72,9 @@ function PanelZgloszenia() {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else {
-                    alert(JSON.stringify(error.response.data));
+                    toast.error(JSON.stringify(error.response.data));
                 }
             });
     }
@@ -94,9 +94,9 @@ function PanelZgloszenia() {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else {
-                    alert(JSON.stringify(error.response.data));
+                    toast.error(JSON.stringify(error.response.data));
                 }
             });
     }

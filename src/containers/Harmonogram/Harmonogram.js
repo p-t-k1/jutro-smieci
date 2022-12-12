@@ -94,11 +94,11 @@ function Harmonogram() {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else if (error.response.data == "Not Found") {
                     toast.error("Twoja lokalizacja nie posiada jeszcze harmonogramu wywozu śmieci")
                 } else {
-                    alert(error.response.data);
+                    toast.error(error.response.data);
                 }
             });
     }, []);
@@ -150,7 +150,7 @@ function Harmonogram() {
             </>}
 
         </div>
-        <button onClick={renderPDF}>Pobierz harmonogram</button>
+        {data && <span className="Render-pdf" onClick={renderPDF}>Pobierz harmonogram</span>}
     </div>
   );
 }

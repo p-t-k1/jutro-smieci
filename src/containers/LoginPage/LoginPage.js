@@ -3,6 +3,7 @@ import './LoginPage.css'
 import axios from "axios";
 import config from "../../config";
 import {useHistory} from "react-router-dom";
+import {toast} from "react-toastify";
 
 function LoginPage() {
 
@@ -24,9 +25,9 @@ function LoginPage() {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else {
-                    alert(error.response.data);
+                    toast.error(error.response.data);
                 }
             });
     }
@@ -35,7 +36,7 @@ function LoginPage() {
     <div className="LoginPage">
 
         <div className="LoginForm">
-            <h3>Zaloguj się</h3>
+            <h3>Zaloguj się do panelu administarcyjnego</h3>
 
             <span>Email</span>
             <input type="text" onChange={() => setEmail(event.target.value)}/>
@@ -43,7 +44,7 @@ function LoginPage() {
             <span>Hasło</span>
             <input type="password" onChange={() => setPassword(event.target.value)}/>
 
-            <button onClick={handleSubmit}>Zaloguj się</button>
+            <button className="Panel-login" onClick={handleSubmit}>Zaloguj się</button>
 
         </div>
 

@@ -3,6 +3,7 @@ import './Zglos.css'
 import axios from "axios";
 import config from "../../config";
 import {toast} from "react-toastify";
+import validateEmail from "../../utils/validateEmail";
 
 function Zglos() {
 
@@ -12,6 +13,10 @@ function Zglos() {
     const token = JSON.parse(localStorage.getItem('area'));
 
     const handleAddNew = () => {
+        if(!validateEmail(email) || email == undefined || title == "" || message == ""){
+            return toast.error("Uzupełnij poprawnie wszystkie pola")
+        }
+
         axios({
             method: 'post',
             url: `${config.serverUrl}/api/messages/addNew`,
@@ -28,9 +33,9 @@ function Zglos() {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else {
-                    alert(JSON.stringify(error.response.data));
+                    toast.error(JSON.stringify(error.response.data));
                 }
             });
     }

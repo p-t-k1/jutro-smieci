@@ -33,7 +33,7 @@ function Wywoz({props}) {
             })
             .catch((error) => {
                 if (error.message === 'Network Error') {
-                    alert('Problem z połączeniem internetowym');
+                    toast.error('Problem z połączeniem internetowym');
                 } else if (error.response.data == "Not Found") {
                     toast.error("Twoja lokalizacja nie posiada jeszcze harmonogramu wywozu śmieci")
                 } else {
