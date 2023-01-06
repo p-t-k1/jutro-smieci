@@ -62,7 +62,7 @@ function Zglos() {
             <span>Treść zgłoszenia:</span>
             <textarea value={message} onChange={(event) => setMessage(event.target.value)}></textarea>
 
-            <div className={"Add-Button"} onClick={handleAddNew}>Zapisz</div>
+            <div className={"Add-Button"} onClick={handleAddNew}>Wyślij</div>
         </div>
     </div>
   );

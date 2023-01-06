@@ -3,9 +3,9 @@ import './Harmonogram.css'
 import axios from "axios";
 import config from "../../config";
 import {toast} from "react-toastify";
-import jsPDF from 'jspdf'
-import autoTable from 'jspdf-autotable'
-
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import moment from "moment";
 
 function Harmonogram() {
 
@@ -63,15 +63,19 @@ function Harmonogram() {
         doc.setFontSize(20);
         doc.text("Harmonogram wywozu dla:", doc.internal.pageSize.getWidth()/2, 10, { align: "center" })
         doc.setFontSize(14);
-        doc.text(data.schedule.obszar.kodpocztowy + " " + data.schedule.obszar.miejscowosc + ", " + data.schedule.obszar.ulica + " " + data.schedule.obszar.komentarz, doc.internal.pageSize.getWidth()/2, 16, { align: "center" })
+        let lokalizacjaNazwa = data.schedule.obszar.ulica + " " + data.schedule.obszar.komentarz + "\n, " + data.schedule.obszar.kodpocztowy + " " + data.schedule.obszar.miejscowosc;
+        doc.text(lokalizacjaNazwa.normalize('NFKD').replace(/[^\w\s.-_/]/g, ''), doc.internal.pageSize.getWidth()/2, 16, { align: "center" })
 
         autoTable(doc, {
             styles: { cellWidth: 25, halign: 'center', valign: 'middle', lineWidth: 0.3, lineColor: 'black', textColor: 'black', cellPadding: 2.5},
             headStyles: { fillColor: [215, 215, 215], fontStyle: 'normal',},
-            margin: { top: 20 },
+            margin: { top: 25 },
             head: [['Miesiac', 'Zmieszane', 'Szklo', 'Tworzywa sztuczne', 'Papier', 'Biodegradowalne', 'Wielkogabarytowe']],
             body: body,
         })
+
+        doc.setFontSize(10);
+        doc.text("Wygenerowano: " + moment().format('DD-MM-YYYY'), 40, 153, { align: "center" })
 
         doc.save(`${data.schedule.obszar.ulica}-harmonogram.pdf`)
     }
