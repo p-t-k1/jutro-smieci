@@ -1,7 +1,9 @@
-### Co przetestować
+# Jutro śmieci - MERN Stack Application
 
-- interfejs dla uzytkownika skaluje się na mobile, panel admina ma się nie skalować
-- dana lokalizacja nie ma przypisanego harmonogramu -> komunikat
-- po zmienieniu lokalizacji odswieza sie i jest nowy juz harmonogram wszędzie
-- przy dodawaniu harmonogramu nie mozna dać dnia 01, musi to być 1
-- znaczek ładowania przy pobieraniu danych z serwera
+#### An application for waste removal companies and their customers. It allows for managing schedules and setting email reminders for preparing the trash for pickup.
+
+server: https://github.com/p-t-k1/jutro-smieci-server
+
+#### Preview:
+
+<img width="500px" src="./Nagranie.gif" />
